@@ -11,14 +11,16 @@ class Entity:
         self.data = data
         self._keys = self.data.keys()
         
+        
     def __getattr__(self, key):
-        if key not in self._keys:
-            raise IndexError(f'Key {key} does not exist')
-        else:
-            return self.data[key]
-            
+        self.__sanitize_key(key)
+        
+        return self.data[key]
+        
+         
     def get_keys(self):
         return self._keys
+    
     
     def get_by_key(self, key:str):
         self.__sanitize_key(key)

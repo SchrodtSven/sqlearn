@@ -4,7 +4,7 @@ import pandas as pd
 class Query:
     """" Class for using SQLite3 with Python """
     
-    data_source  = 'data/my_first.db'
+    data_source  = 'data/my_database.db'
     conn = None
     crs = None
     
