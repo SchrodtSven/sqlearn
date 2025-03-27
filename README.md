@@ -18,4 +18,5 @@
 <code>sven@thanos data %</code> <kbd> sqlite3 my_database.db < ../.schema/customer.sql </kbd>
 <code>sven@thanos data %</code> <kbd> ls</kbd>
 <code>my_database.db</code>
+
 </pre>

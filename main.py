@@ -5,7 +5,7 @@ from sqlearn.core.query import Query
 
 
 q = Query()
-dta = q.exc("SELECT * FROM Customer").f_all()
+dta = q.exc("SELECT * FROM Py").f_all()
 
 df = pd.DataFrame(columns=dta[0].keys(), data=dta)
 

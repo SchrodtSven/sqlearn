@@ -46,4 +46,3 @@ class Query:
             return self.crs.fetchall()
     
     
-        
