@@ -33,7 +33,7 @@ class Query:
 
         Args:
             sql (str): Query in SQL syntax
-            dta (dict, optional): Values to be used when executoig query
+            dta (dict, optional): Values to be used when executing query
 
         Returns:
             _type_: self
@@ -52,11 +52,14 @@ class Query:
         """
         return self.crs.fetchall()
     
+    def select(self, attr='*'):
+        pass
+    
     def insert(self, tbl:str, dta:dict={}):
-        """ Executing INSERT stmt on entity('table') tbl with data
+        """ Executing INSERT stmt on entity type('table') tbl with data
 
         Args:
-            tbl (str): Name of entity
+            tbl (str): Name of entity type
             dta (dict): data to be inserted
 
         Returns:
@@ -64,11 +67,6 @@ class Query:
         """
         sql  = 'fii'
         self.qb = QueryBuilder(tbl)
-        
-        #print( dta.values(), type(dta.values()))
-        #print(type(self.qb.insert(dta) ), self.qb.insert(dta) )
-        
-        #exit()
         
         self.crs.execute(self.qb.insert(dta) , list(dta.values()))
         self.conn.commit()

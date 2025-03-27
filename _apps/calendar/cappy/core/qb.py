@@ -1,23 +1,23 @@
 # SINCE: 2025-03-21
-# Building  very basic sql query (CREATE, SELECT, INSERT ...) strings with given data (structures), mainly dicts
-# SUBJECT: This is for (my) learning purposes only - I am not acting in a strict way (coding style etc.) here
+# SUBJECT: Building very basic sql stmt (CREATE, SELECT, INSERT ...) strings with given data (structures), mainly dicts
+
 
 
 class QueryBuilder:
 
     INSERT_TPL = "INSERT INTO {}  ({}) VALUES ({})"
-    
-    
     UPDATE_TPL = "UPDATE {}  SET {} WHERE {}"
-    
+
+    DELETE_TPL = "DELETE FROM {} WHERE {}"
+
     ASSIGN_LINE = "{0} = :{0}"
 
-    def __init__(self, ety: str = ""):
-        self.entity = ety
+    def __init__(self, tbl: str = ""):
+        self.tbl = tbl
 
     def insert(self, dta: dict = {}) -> str:
-        """ Generating INSERT stmt - qmark style
-
+        """Generating INSERT stmt - qmark style
+            INSERT INTO $entity_type (a,s,b) VALUES (?, ?, ?)
         Args:
             dta (dict, optional): _description_. Defaults to {}.
 
@@ -25,17 +25,17 @@ class QueryBuilder:
             str: _description_
         """
         if len(dta) == 0:
-            return ''
+            return ""
 
         return self.INSERT_TPL.format(
-            self.entity,
+            self.tbl,
             ", ".join(dta.keys()),
             ", ".join(["?" for x in range(len(dta))]),
         )
 
-    def update(self, dta: dict = {}, id_key='id') -> str:
-        """ Generating UPDATE stmt - named style 
-
+    def update(self, dta: dict = {}, id_key: str = "id") -> str:
+        """Generating UPDATE stmt - named style
+            UPDATE $entity_type SET a=:a, b=:b WHERE c=:c
         Args:
             dta (dict, optional): _description_. Defaults to {}.
             id_key (str, optional): _description_. Defaults to 'id'.
@@ -44,21 +44,31 @@ class QueryBuilder:
             str: _description_
         """
         if len(dta) == 0:
-            return ''
-        
-        where = id_key + ' = :' + id_key
+            return ""
+
+        where = id_key + " = :" + id_key
+
         where_val = dta[id_key]
+
         assigment_list = []
-        #del( dta[id_key])
-        
+        # del( dta[id_key])
+
         for key in dta.keys():
             if key != id_key:
                 assigment_list.append(self.ASSIGN_LINE.format(key))
 
-    
+        return self.UPDATE_TPL.format(self.tbl, ", ".join(assigment_list), where)
 
-        return self.UPDATE_TPL.format(
-            self.entity,
-            ", ".join(assigment_list),
+    def delete(self, where:str):
+        """ Generating DELETE stmt
+
+        Args:
+            where (str): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        return self.DELETE_TPL.format(
+            self.tbl,
             where
         )
