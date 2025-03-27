@@ -4,7 +4,7 @@ import pandas as pd
 class Query:
     """" Class for using SQLite3 with Python """
     
-    data_source  = 'data/my_database.db'
+    data_source  = 'tmp/my_database.db'
     conn = None
     crs = None
     
@@ -18,7 +18,7 @@ class Query:
         self.conn.row_factory = sqlite3.Row
         self.crs = self.conn.cursor()
         
-    def exc(self, sql:str):
+    def exc(self, sql:str, data:dict={}):
         """ Executing given SQL 
 
         Args:
@@ -27,7 +27,7 @@ class Query:
         Returns:
             _type_: self
         """
-        self.crs.execute(sql)
+        self.crs.execute(sql, data)
         return self
     
     def f_all(self, as_df:bool=False):
