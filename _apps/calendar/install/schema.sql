@@ -20,6 +20,7 @@ INSERT INTO location VALUES(2,'Secret place', 'Somewhere in DE-47445', 51.486559
 CREATE TABLE IF NOT EXISTS "status"
 (
     [id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    [ety_class_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     [title] NVARCHAR(160)  NOT NULL
     
 );
@@ -49,15 +50,17 @@ CREATE TABLE IF NOT EXISTS "event"
 (
     [id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     [title] NVARCHAR(160)  NOT NULL,
-    [loc_id] INTEGER  NOT NULL,
-    [e_from] REAL  NOT NULL,
-    [e_until] REAL  NOT NULL,
+    [evt_start] REAL  NOT NULL,
+    [evt_end] REAL  NOT NULL,
     [cat_id] INTEGER  NOT NULL,
+    [loc_id] INTEGER  NOT NULL,
+    [sts_id] INTEGER NULL,
     [comment] TEXT NULL,
-    [status_id] INTEGER NULL,
     FOREIGN KEY ([loc_id]) REFERENCES "location" ([id]) 
 		ON DELETE NO ACTION ON UPDATE NO ACTION,
-    FOREIGN KEY ([status_id]) REFERENCES "status" ([id]) 
+    FOREIGN KEY ([sts_id]) REFERENCES "status" ([id]) 
+		ON DELETE NO ACTION ON UPDATE NO ACTION
+    FOREIGN KEY ([cat_id]) REFERENCES "category" ([id]) 
 		ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
