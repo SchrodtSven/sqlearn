@@ -52,8 +52,10 @@ class Query:
         """
         return self.crs.fetchall()
     
-    def select(self, attr='*'):
-        pass
+    def select(self, tbl:str, where:str='1', attr:list=['*']):
+         self.qb = QueryBuilder(tbl)
+         self.crs.execute(self.qb.select(where, attr))
+         return self.f_all()
     
     def insert(self, tbl:str, dta:dict={}):
         """ Executing INSERT stmt on entity type('table') tbl with data
@@ -65,7 +67,7 @@ class Query:
         Returns:
             _type_: self
         """
-        sql  = 'fii'
+        
         self.qb = QueryBuilder(tbl)
         
         self.crs.execute(self.qb.insert(dta) , list(dta.values()))
