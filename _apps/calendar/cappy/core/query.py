@@ -7,7 +7,7 @@ from cappy.core.qb import QueryBuilder
 class Query:
     """" Class for using SQLite3 with Python """
     
-    data_source  = 'db/main.db'
+    data_source  = 'db/cappy_main.db'
     conn = None
     crs = None
     

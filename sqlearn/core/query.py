@@ -41,7 +41,7 @@ class Query:
         """
         if as_df:
             tmp = self.crs.fetchall()
-            pd.DataFrame(columns=tmp[0].keys(), data=tmp)
+            pd.DataFrame(columns=tmp[0].keys(), data=tmp) # looks too complicated, let's see l8er
         else: 
             return self.crs.fetchall()
     
