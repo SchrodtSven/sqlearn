@@ -3,11 +3,11 @@
 
 -    Data Query Language (DQL) Abfrage von Daten
 -    Data Manipulation Language (DML) Bearbeitung von Daten
--    Data Definition Language (DDL) Definition/ Strukturierung von Daten
--    Data Control Language (DCL)  Verwaltung/Steuerung der Datenbank
+-    Data Definition Language (DDL) Definition / Strukturierung von Daten
+-    Data Control Language (DCL)  Verwaltung / Steuerung der Datenbank
 -    außerdem: (weiter unten )
     
-    -    Data Control Language (DCL)  Verwaltung/Steuerung der Datenbank
+    -    Transaction Control Language (TCL) Transaktionssteuerung
 
 
 
