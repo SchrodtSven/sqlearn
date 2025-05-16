@@ -5,9 +5,8 @@
 -    Data Manipulation Language (DML) Bearbeitung von Daten
 -    Data Definition Language (DDL) Definition / Strukturierung von Daten
 -    Data Control Language (DCL)  Verwaltung / Steuerung der Datenbank
--    außerdem: (weiter unten )
-    
-    -    Transaction Control Language (TCL) Transaktionssteuerung
+-    außerdem: (weiter unten)
+    * Transaction Control Language (TCL) Transaktionssteuerung
 
 
 
