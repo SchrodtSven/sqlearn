@@ -37,6 +37,8 @@ print(new_id)
 ## To do
 
 - [x] using correct (invalid/test/fake) mail SLDs for mocked data acc. 2 RFC ...
+- [ ] Removing parts from `_apps` to separate repos
+- [ ] Wipe& clean
 
 ### Installing SQLite DB from schema definitions
 <pre>
