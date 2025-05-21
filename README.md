@@ -2,7 +2,7 @@
 
 ## Motivation
 
-- Learning usage of SQL with Python step-by-step in more depth
+- Learning usage of SQL (not SQL itself 😉) *with Python* step-by-step in more depth
 
 - Combining with formerly learned Python lessons (e.G: Pandas, Numpy, GUI stuff)
     && existing SQL skillz
